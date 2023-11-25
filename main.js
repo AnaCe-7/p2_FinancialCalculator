@@ -26,3 +26,18 @@ function calculadora (button, display) {
             break;
     }
 }
+
+function calculate(display) {
+    display.innerHTML = eval(display.innerHTML);
+}
+
+function update(display, button) {
+    if (display.innerHTML == 0) {
+        display.innerHTML = '';
+    }
+    display.innerHTML = display.innerHTML + button.innerHTML;    
+}
+
+function erase(display) {
+    display.innerHTML = 0;
+}
