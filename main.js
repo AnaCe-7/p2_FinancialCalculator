@@ -11,7 +11,18 @@ window.addEventListener('load', ()=> {
     })
 });
 
+function calculadora (button, display) {
+    switch (button.innerHTML){
+        case 'C':
+            erase(display);
+            break;
 
-
-
-
+        case '=':
+            calculate(display);
+            break;
+        
+        default:
+            update(display, button);
+            break;
+    }
+}
