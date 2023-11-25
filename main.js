@@ -6,12 +6,10 @@ window.addEventListener('load', ()=> {
 
     calculatorButtonsArray.forEach( (button) => {
         button.addEventListener('click', ()=> {
-            console.log(button.innerHTML);            
+            calculadora(button, display);            
         })
     })
 });
-
-
 
 
 
