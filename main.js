@@ -35,7 +35,16 @@ function update(display, button) {
     if (display.innerHTML == 0) {
         display.innerHTML = '';
     }
-    display.innerHTML = display.innerHTML + button.innerHTML;    
+    display.innerHTML = display.innerHTML + button.innerHTML;
+    
+    if (button.id === "delete") {
+        if (display.textContent.length === 1 || display.textContent === "Error") {
+            display.textContent = "0";
+        } else {
+            display.textContent = display.textContent.slice(0, -1);
+        }
+        return;
+    }
 }
 
 function erase(display) {
