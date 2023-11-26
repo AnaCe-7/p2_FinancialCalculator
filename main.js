@@ -8,7 +8,7 @@ window.addEventListener('load', ()=> {
         button.addEventListener('click', ()=> {
             
             if (button.id === "delete") {
-                if (calculatorDisplay.textContent.length === 1 || calculatorDisplay.textContent === '---- Error ----') {
+                if (calculatorDisplay.textContent.length === 1 || calculatorDisplay.textContent === 'Error') {
                     calculatorDisplay.textContent = "0";
                 } else {
                     calculatorDisplay.textContent = calculatorDisplay.textContent.slice(0, -1);
@@ -41,13 +41,13 @@ function calculate(calculatorDisplay) {
     try {
         calculatorDisplay.textContent = eval(calculatorDisplay.textContent);
     } catch {
-        calculatorDisplay.textContent = '---- Error ----';
+        calculatorDisplay.textContent = 'Error';
     }
     return;
 };
 
 function update(calculatorDisplay, button) {
-    if (calculatorDisplay.textContent == 0 || calculatorDisplay.textContent === '---- Error ----') {
+    if (calculatorDisplay.textContent == 0 || calculatorDisplay.textContent === 'Error') {
         calculatorDisplay.textContent = '';
     }
     calculatorDisplay.textContent = calculatorDisplay.textContent + button.textContent;
