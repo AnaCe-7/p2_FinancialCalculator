@@ -1,52 +1,58 @@
 window.addEventListener('load', ()=> {
-    const display = document.querySelector(".calculator-display");
+    const calculatorDisplay = document.querySelector(".display");
     const calculatorButtons = document.getElementsByClassName('btn');
 
     const calculatorButtonsArray = Array.from(calculatorButtons);
 
     calculatorButtonsArray.forEach( (button) => {
         button.addEventListener('click', ()=> {
-            calculadora(button, display);            
+            
+            if (button.id === "delete") {
+                if (calculatorDisplay.textContent.length === 1 || calculatorDisplay.textContent === '---- Error ----') {
+                    calculatorDisplay.textContent = "0";
+                } else {
+                    calculatorDisplay.textContent = calculatorDisplay.textContent.slice(0, -1);
+                }
+                return;
+            }
+
+            calculadora(button, calculatorDisplay);
         })
     })
 });
 
-function calculadora (button, display) {
-    switch (button.innerHTML){
+function calculadora (button, calculatorDisplay) {
+    switch (button.textContent){
         case 'C':
-            erase(display);
+            deleteAll(calculatorDisplay);
             break;
 
         case '=':
-            calculate(display);
+            calculate(calculatorDisplay);
             break;
         
         default:
-            update(display, button);
+            update(calculatorDisplay, button);
             break;
     }
-}
+};
 
-function calculate(display) {
-    display.innerHTML = eval(display.innerHTML);
-}
-
-function update(display, button) {
-    if (display.innerHTML == 0) {
-        display.innerHTML = '';
+function calculate(calculatorDisplay) {
+    try {
+        calculatorDisplay.textContent = eval(calculatorDisplay.textContent);
+    } catch {
+        calculatorDisplay.textContent = '---- Error ----';
     }
-    display.innerHTML = display.innerHTML + button.innerHTML;
-    
-    if (button.id === "delete") {
-        if (display.textContent.length === 1 || display.textContent === "Error") {
-            display.textContent = "0";
-        } else {
-            display.textContent = display.textContent.slice(0, -1);
-        }
-        return;
-    }
-}
+    return;
+};
 
-function erase(display) {
-    display.innerHTML = 0;
-}
+function update(calculatorDisplay, button) {
+    if (calculatorDisplay.textContent == 0 || calculatorDisplay.textContent === '---- Error ----') {
+        calculatorDisplay.textContent = '';
+    }
+    calculatorDisplay.textContent = calculatorDisplay.textContent + button.textContent;
+};
+
+function deleteAll(calculatorDisplay) {
+    calculatorDisplay.textContent = 0;
+};
