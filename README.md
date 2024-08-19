@@ -21,3 +21,7 @@ Intuitive user interface.
 1. Clone this repository on your computer by copying its link and then from the Visual Studio Code Text editor, in the terminal, execute the command:
 git clone (link of the repository copied from github).
 2. Download the source code by clicking on Download zip, then open the proyect in Visual Studio Code, right click on the index.html file and click on Reveal in File Explorer.
+
+
+### Deployment
+[Visit calculator page](https://anace-7.github.io/p2_FinancialCalculator/)
